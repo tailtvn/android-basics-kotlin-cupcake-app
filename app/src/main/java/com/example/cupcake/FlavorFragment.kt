@@ -43,6 +43,9 @@ class FlavorFragment : Fragment() {
     ): View? {
         val fragmentBinding = FragmentFlavorBinding.inflate(inflater, container, false)
         binding = fragmentBinding
+        binding?.apply {
+            viewModel = sharedViewModel
+        }
         return fragmentBinding.root
     }
 

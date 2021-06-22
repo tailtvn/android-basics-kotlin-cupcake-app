@@ -43,6 +43,9 @@ class PickupFragment : Fragment() {
     ): View? {
         val fragmentBinding = FragmentPickupBinding.inflate(inflater, container, false)
         binding = fragmentBinding
+        binding?.apply {
+            viewModel = sharedViewModel
+        }
         return fragmentBinding.root
     }
 
