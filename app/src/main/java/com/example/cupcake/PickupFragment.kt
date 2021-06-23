@@ -43,10 +43,6 @@ class PickupFragment : Fragment() {
     ): View? {
         val fragmentBinding = FragmentPickupBinding.inflate(inflater, container, false)
         binding = fragmentBinding
-        binding?.apply {
-            viewModel = sharedViewModel
-            lifecycleOwner = viewLifecycleOwner
-        }
         return fragmentBinding.root
     }
 
@@ -54,7 +50,9 @@ class PickupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
-            nextButton.setOnClickListener { goToNextScreen() }
+            viewModel = sharedViewModel
+            lifecycleOwner = viewLifecycleOwner
+            pickupFragment = this@PickupFragment
         }
     }
 

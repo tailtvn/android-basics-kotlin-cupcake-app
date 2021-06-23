@@ -43,10 +43,6 @@ class SummaryFragment : Fragment() {
     ): View? {
         val fragmentBinding = FragmentSummaryBinding.inflate(inflater, container, false)
         binding = fragmentBinding
-        binding?.apply {
-            viewModel = sharedViewModel
-            lifecycleOwner = viewLifecycleOwner
-        }
         return fragmentBinding.root
     }
 
@@ -54,7 +50,9 @@ class SummaryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
-            sendButton.setOnClickListener { sendOrder() }
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = sharedViewModel
+            summaryFragment = this@SummaryFragment
         }
     }
 
